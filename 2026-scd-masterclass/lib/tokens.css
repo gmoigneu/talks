@@ -1,0 +1,73 @@
+/* ============================================================================
+   Dispatch deck theme — design tokens (Upsun design system)
+   Ported from the Upsun "Friday" design system (colors_and_type.css) and the
+   Dispatch Deck Template. Light-first, projection-scale type.
+   ============================================================================ */
+
+/* --- Vendored fonts (offline) -------------------------------------------- */
+@font-face { font-family:"Open Sans"; font-style:normal; font-weight:400; font-display:swap; src:url("./fonts/open-sans-400.woff2") format("woff2"); }
+@font-face { font-family:"Open Sans"; font-style:italic; font-weight:400; font-display:swap; src:url("./fonts/open-sans-400-italic.woff2") format("woff2"); }
+@font-face { font-family:"Open Sans"; font-style:normal; font-weight:600; font-display:swap; src:url("./fonts/open-sans-600.woff2") format("woff2"); }
+@font-face { font-family:"Open Sans"; font-style:normal; font-weight:700; font-display:swap; src:url("./fonts/open-sans-700.woff2") format("woff2"); }
+@font-face { font-family:"Open Sans"; font-style:normal; font-weight:800; font-display:swap; src:url("./fonts/open-sans-800.woff2") format("woff2"); }
+@font-face { font-family:"Space Mono"; font-style:normal; font-weight:400; font-display:swap; src:url("./fonts/space-mono-400.woff2") format("woff2"); }
+@font-face { font-family:"Space Mono"; font-style:normal; font-weight:700; font-display:swap; src:url("./fonts/space-mono-700.woff2") format("woff2"); }
+@font-face { font-family:"IBM Plex Mono"; font-style:normal; font-weight:400; font-display:swap; src:url("./fonts/ibm-plex-mono-400.woff2") format("woff2"); }
+@font-face { font-family:"IBM Plex Mono"; font-style:normal; font-weight:500; font-display:swap; src:url("./fonts/ibm-plex-mono-500.woff2") format("woff2"); }
+@font-face { font-family:"IBM Plex Mono"; font-style:normal; font-weight:600; font-display:swap; src:url("./fonts/ibm-plex-mono-600.woff2") format("woff2"); }
+
+:root {
+  /* ───────── Upsun Violet (brand primary) ───────── */
+  --upsun-violet-100:#EFEDFF; --upsun-violet-200:#DFDAFF; --upsun-violet-300:#BFB5FF;
+  --upsun-violet-400:#A090FF; --upsun-violet-500:#806BFF; --upsun-violet-600:#6046FF;
+  --upsun-violet-700:#4D38CC; --upsun-violet-800:#3A2A99; --upsun-violet-900:#261C66; --upsun-violet-1000:#130E33;
+
+  /* ───────── Upsun Pink (secondary) ───────── */
+  --upsun-pink-100:#FDE8FD; --upsun-pink-200:#FAD2FB; --upsun-pink-300:#F6A4F7;
+  --upsun-pink-400:#F177F4; --upsun-pink-500:#ED49F0; --upsun-pink-600:#E81CEC;
+  --upsun-pink-700:#BA16BD; --upsun-pink-800:#8B118E; --upsun-pink-900:#5D0B5E; --upsun-pink-1000:#2E062F;
+
+  /* ───────── Upsun Lime (accent) ───────── */
+  --upsun-lime-100:#FBFEE6; --upsun-lime-200:#F7FECC; --upsun-lime-300:#EEFC99;
+  --upsun-lime-400:#E6FB66; --upsun-lime-500:#DDF933; --upsun-lime-600:#D5F800;
+  --upsun-lime-700:#AAC600; --upsun-lime-800:#809500; --upsun-lime-900:#556300; --upsun-lime-1000:#2B3200;
+
+  /* ───────── Upsun Grey (neutral) ───────── */
+  --upsun-grey-0:#FFFFFF; --upsun-grey-100:#F0F2F5; --upsun-grey-200:#D8DBDC;
+  --upsun-grey-300:#B1B7BA; --upsun-grey-400:#8B9397; --upsun-grey-500:#646F75;
+  --upsun-grey-600:#3D4B52; --upsun-grey-700:#313C42; --upsun-grey-800:#252D31;
+  --upsun-grey-900:#181E21; --upsun-grey-1000:#0C0F10;
+
+  /* ───────── Semantic status ───────── */
+  --java-100:#E9F8F8; --java-200:#D3F1F1; --java-600:#23B7B7; --java-700:#1C9292; --java-800:#156E6E; /* success teal */
+  --fire-100:#FFF3EE; --fire-400:#FFB59B; --fire-600:#FF8359; --fire-700:#CC6947; --fire-800:#994F35; /* failure orange */
+  --red-100:#FFEBEA;  --red-200:#FED7D4;  --red-400:#FD877E;  --red-600:#FB3728;  --red-700:#C92C20;  --red-800:#972118; /* critical */
+  --gold-100:#FDF6E6; --gold-400:#F4CB66; --gold-600:#EDA900; --gold-700:#BE8700; --gold-800:#8E6500; /* warning */
+
+  /* ───────── Spacing / radii / shadows ───────── */
+  --s-2:2px; --s-4:4px; --s-8:8px; --s-16:16px; --s-24:24px; --s-32:32px; --s-40:40px; --s-48:48px; --s-64:64px; --s-80:80px;
+  --radius-xs:2px; --radius-sm:4px; --radius-md:8px; --radius-lg:16px; --radius-xl:32px; --radius-pill:999px;
+  --bs-small:0px 1px 4px 0px rgba(139,147,151,0.4);
+  --bs-medium:0px 4px 10px 0px rgba(139,147,151,0.4);
+  --bs-large:0px 8px 20px 0px rgba(139,147,151,0.4);
+  --bs-x-large:0px 16px 40px 0px rgba(139,147,151,0.4);
+
+  /* ───────── Fonts ───────── */
+  --ff-sans:"Open Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ff-mono:"Space Mono","IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ff-code:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  /* ───────── Projection type scale (px @ 1920×1080 stage) ───────── */
+  --type-display: 128px;
+  --type-title:   80px;
+  --type-subtitle:42px;
+  --type-lead:    34px;
+  --type-body:    30px;
+  --type-small:   24px;
+  --type-eyebrow: 24px;
+
+  /* Deck frame */
+  --bar-h: 72px;
+  --pad-x: 96px;
+  --pad-y: 72px;
+}
