@@ -1,0 +1,29 @@
+/* ============================================================================
+   Dispatch deck theme — highlight.js syntax theme (Upsun palette, light)
+   Load AFTER the reveal highlight plugin CSS. Comment contrast raised.
+   ============================================================================ */
+
+.reveal .hljs { background: var(--upsun-grey-0); color: var(--upsun-grey-900); }
+.reveal .ink .hljs, .reveal .violet .hljs { background: var(--upsun-grey-1000); color: var(--upsun-grey-100); }
+
+.reveal .hljs-comment, .reveal .hljs-quote { color: var(--upsun-grey-500); font-style: italic; }
+.reveal .ink .hljs-comment, .reveal .violet .hljs-comment { color: var(--upsun-grey-400); }
+
+.reveal .hljs-keyword, .reveal .hljs-selector-tag, .reveal .hljs-literal,
+.reveal .hljs-section, .reveal .hljs-doctag { color: var(--upsun-violet-600); font-weight: 700; }
+.reveal .ink .hljs-keyword, .reveal .violet .hljs-keyword,
+.reveal .ink .hljs-section, .reveal .violet .hljs-section { color: var(--upsun-violet-400); }
+
+.reveal .hljs-string, .reveal .hljs-regexp, .reveal .hljs-addition { color: var(--java-700); }
+.reveal .ink .hljs-string, .reveal .violet .hljs-string { color: var(--java-600); }
+
+.reveal .hljs-number, .reveal .hljs-symbol, .reveal .hljs-bullet, .reveal .hljs-link { color: var(--fire-700); }
+.reveal .hljs-title, .reveal .hljs-title.function_, .reveal .hljs-name { color: var(--upsun-violet-800); font-weight: 700; }
+.reveal .ink .hljs-title, .reveal .violet .hljs-title { color: var(--upsun-pink-400); }
+.reveal .hljs-type, .reveal .hljs-built_in, .reveal .hljs-class .hljs-title, .reveal .hljs-params { color: var(--upsun-violet-800); }
+.reveal .hljs-attr, .reveal .hljs-attribute, .reveal .hljs-variable, .reveal .hljs-template-variable { color: var(--upsun-grey-900); }
+.reveal .ink .hljs-attr, .reveal .violet .hljs-attr { color: var(--upsun-grey-100); }
+.reveal .hljs-meta, .reveal .hljs-tag { color: var(--upsun-grey-500); }
+.reveal .hljs-deletion { color: var(--red-600); }
+.reveal .hljs-emphasis { font-style: italic; }
+.reveal .hljs-strong { font-weight: 700; }

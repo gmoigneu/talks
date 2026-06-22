@@ -1,0 +1,136 @@
+/* ============================================================================
+   Dispatch deck theme — reveal.js base, slide frame, app toolbar, type
+   Load AFTER reveal.css + tokens.css, BEFORE layouts.css.
+   Reveal stage is configured 1920×1080; everything is authored at that scale
+   and reveal scales it to fit the viewport.
+   ============================================================================ */
+
+:root {
+  --r-background-color: var(--upsun-grey-1000);
+  --r-main-font: var(--ff-sans);
+  --r-main-color: var(--upsun-grey-900);
+  --r-heading-font: var(--ff-sans);
+  --r-heading-color: var(--upsun-grey-900);
+  --r-code-font: var(--ff-code);
+  --r-link-color: var(--upsun-violet-700);
+  --r-link-color-hover: var(--upsun-violet-500);
+}
+
+.reveal { font-family: var(--ff-sans); -webkit-font-smoothing: antialiased; }
+.reveal .slides { text-align: left; }
+
+/* ── Slide frame ──────────────────────────────────────────────────────────
+   reveal toggles `display` inline on the active slide; win it for .present so
+   our column layout (toolbar + body) applies. Hidden slides keep display:none. */
+.reveal .slides > section {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  flex-direction: column;
+  background: var(--upsun-grey-0);
+  color: var(--upsun-grey-900);
+  overflow: hidden;
+}
+.reveal .slides > section.present { display: flex !important; }
+
+.reveal .slides > section.tint   { background: var(--upsun-violet-100); }
+.reveal .slides > section.ink     { background: var(--upsun-grey-900); color: #fff; }
+.reveal .slides > section.violet  { background: var(--upsun-violet-700); color: #fff; }
+
+/* ── App toolbar (injected into every slide by the deck script) ───────────── */
+.reveal .bar {
+  height: var(--bar-h);
+  flex: 0 0 var(--bar-h);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 40px;
+  background: var(--upsun-grey-0);
+  border-bottom: 1px solid var(--upsun-grey-200);
+}
+.reveal .ink .bar, .reveal .violet .bar {
+  background: var(--upsun-grey-1000);
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.reveal .bar-brand { display: flex; align-items: center; gap: 16px; }
+.reveal .bar-brand .mark { width: 34px; height: 34px; display: block; }
+.reveal .bar-brand .mark path { fill: var(--upsun-grey-1000); }
+.reveal .ink .bar-brand .mark path, .reveal .violet .bar-brand .mark path { fill: #fff; }
+.reveal .bar-brand .word { font: 800 27px/1 var(--ff-sans); letter-spacing: -0.01em; color: var(--upsun-grey-900); }
+.reveal .ink .bar-brand .word, .reveal .violet .bar-brand .word { color: #fff; }
+.reveal .bar-sep { width: 1px; height: 28px; background: var(--upsun-grey-200); }
+.reveal .ink .bar-sep, .reveal .violet .bar-sep { background: rgba(255,255,255,0.18); }
+.reveal .bar-proj { display: flex; align-items: center; gap: 9px; font: 600 24px/1 var(--ff-sans); color: var(--upsun-grey-700); }
+.reveal .ink .bar-proj, .reveal .violet .bar-proj { color: var(--upsun-grey-200); }
+.reveal .bar-proj .chev { color: var(--upsun-grey-400); }
+.reveal .bar-spacer { flex: 1 1 auto; }
+.reveal .bar-right { display: flex; align-items: center; gap: 14px; }
+.reveal .bar-icon { width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.reveal .bar-icon svg { width: 24px; height: 24px; color: var(--upsun-grey-500); }
+.reveal .ink .bar-icon svg, .reveal .violet .bar-icon svg { color: var(--upsun-grey-300); }
+.reveal .bar-avatar { width: 40px; height: 40px; border-radius: 999px; background: linear-gradient(135deg, var(--upsun-violet-500), var(--upsun-pink-500)); }
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+.reveal .body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--pad-y) var(--pad-x);
+}
+.reveal .body.center { align-items: center; text-align: center; }
+.reveal .body.top { justify-content: flex-start; }
+
+/* ── Type helpers ───────────────────────────────────────────────────────── */
+.reveal .eyebrow {
+  font: 700 var(--type-eyebrow)/1 var(--ff-sans);
+  text-transform: uppercase; letter-spacing: 0.10em;
+  color: var(--upsun-violet-700); margin: 0 0 24px;
+}
+.reveal .violet .eyebrow, .reveal .ink .eyebrow { color: var(--upsun-lime-500); }
+.reveal .title {
+  font: 800 var(--type-title)/1.04 var(--ff-sans);
+  letter-spacing: -0.02em; margin: 0; color: inherit; text-wrap: balance;
+}
+.reveal .title.display { font-size: var(--type-display); }
+.reveal .subtitle {
+  font: 400 var(--type-subtitle)/1.25 var(--ff-sans);
+  margin: 28px 0 0; color: var(--upsun-grey-600); max-width: 24ch;
+}
+.reveal .violet .subtitle, .reveal .ink .subtitle { color: rgba(255,255,255,0.85); }
+.reveal .lead { font: 400 var(--type-lead)/1.4 var(--ff-sans); color: var(--upsun-grey-600); margin: 0; max-width: 30ch; }
+.reveal .violet .lead, .reveal .ink .lead { color: rgba(255,255,255,0.82); }
+.reveal .body-text { font: 400 var(--type-body)/1.5 var(--ff-sans); color: var(--upsun-grey-600); margin: 0; }
+.reveal .violet .body-text, .reveal .ink .body-text { color: rgba(255,255,255,0.82); }
+
+.reveal .accent { color: var(--upsun-violet-600); }
+.reveal .violet .accent, .reveal .ink .accent { color: var(--upsun-lime-500); }
+.reveal .mono { font-family: var(--ff-mono); }
+.reveal .strike { color: var(--upsun-grey-400); text-decoration: line-through; }
+
+.reveal b, .reveal strong { font-weight: 700; }
+.reveal em, .reveal i { font-style: italic; }
+.reveal a { color: var(--upsun-violet-700); text-decoration: none; }
+
+/* ── Code ───────────────────────────────────────────────────────────────── */
+.reveal pre {
+  width: 100%; margin: 0; font-size: 26px; line-height: 1.5;
+  box-shadow: var(--bs-medium); border-radius: var(--radius-lg);
+}
+.reveal pre code {
+  display: block; overflow: auto;
+  font-family: var(--ff-code);
+  background: var(--upsun-grey-0); color: var(--upsun-grey-900);
+  padding: 40px; border-radius: var(--radius-lg); max-height: 760px;
+}
+.reveal .ink pre code, .reveal .violet pre code { background: var(--upsun-grey-1000); color: var(--upsun-grey-100); }
+.reveal code { font-family: var(--ff-code); }
+.reveal :not(pre) > code { background: var(--upsun-grey-100); color: var(--upsun-grey-800); padding: 0.08em 0.3em; border-radius: var(--radius-sm); font-size: 0.88em; }
+.reveal .ink :not(pre) > code, .reveal .violet :not(pre) > code { background: rgba(255,255,255,0.14); color: #fff; }
+
+/* ── reveal chrome ──────────────────────────────────────────────────────── */
+.reveal .progress { color: var(--upsun-violet-600); height: 5px; }
+.reveal .controls { color: var(--upsun-violet-600); }
+.reveal .slide-number { background: transparent; color: var(--upsun-grey-400); font-family: var(--ff-mono); font-size: 22px; left: 44px; right: auto; bottom: 22px; }
+.reveal .ink ~ .slide-number, .reveal .violet ~ .slide-number { color: rgba(255,255,255,0.6); }
