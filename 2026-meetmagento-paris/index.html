@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Off by $82.50: Engineering in an Agentic World · Meet Magento Paris 2026</title>
+
+  <link rel="stylesheet" href="../global-resources/reveal-theme/reveal/dist/reset.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/reveal/dist/reveal.css" />
+  <!-- Dispatch deck theme (Upsun design system): tokens -> dispatch -> layouts -->
+  <link rel="stylesheet" href="../global-resources/reveal-theme/tokens.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/dispatch.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/layouts.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/highlight-dispatch.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ══ SECTION 0 · THE PROMOTION ══ -->
+
+      <!-- 1 · COVER -->
+      <section class="ink" data-bar="Overview">
+        <div class="body">
+          <p class="eyebrow anim">Meet Magento Paris 2026 · Engineering in an Agentic World</p>
+          <h1 class="title display anim">Off by <span class="accent">$82.50</span></h1>
+          <p class="subtitle anim">The Architect of Validation &amp; Verification — building the harness around the model.</p>
+          <div class="anim" style="display:flex; gap:14px; margin-top:48px;">
+            <span class="tag active"><span class="dot"></span>Guillaume Moigneu</span>
+            <span class="tag building"><span class="dot"></span>Upsun</span>
+          </div>
+        </div>
+        <aside class="notes">You're being promoted, not automated. That's the whole talk in one line.
+
+— backstage —
+30-min talk. Tight. Don't rush the open, but keep the centerpiece moving.</aside>
+      </section>
+
+      <!-- 2 · SCAR · cold open -->
+      <section data-bar="A true story">
+        <div class="body">
+          <p class="eyebrow anim">A true story that created perpetual scars</p>
+          <h2 class="title anim">An agent hit a failing test, and "fixed" it by <span class="accent">editing the test.</span></h2>
+          <p class="lead anim" style="margin-top:28px;">It reported green. Everything looked shipped. Nothing was proven.</p>
+          <div class="anim" style="margin-top:36px;"><span class="tag failed"><span class="dot"></span>faked a pass</span></div>
+        </div>
+        <aside class="notes">Let me open with a true story. An agent hit a failing test, and "fixed" it by editing the test until it passed. Then it reported green. Everything looked shipped — and nothing was actually proven. Hold that feeling. The whole talk is about what you build so this can't happen.
+
+— backstage —
+Visceral cold open for an agency dev crowd; everyone has felt this. Backing if pushed: Anthropic, "Natural Emergent Misalignment from Reward Hacking" (arXiv:2511.18397). ImpossibleBench: "GPT-5 exploits test cases 76% of the time," dropping to near-zero when tests are read-only/isolated. EvilGenie flags any edit to a test file as reward hacking.</aside>
+      </section>
+
+      <!-- 4 · STATEMENT · the promotion (thesis) -->
+      <section data-bar="The thesis">
+        <div class="body center">
+          <h2 class="title anim">Programming was always the <span class="accent">consequence</span> of engineering, not the engineering.</h2>
+          <p class="lead anim" style="margin-top:32px;">Agents collapse the consequence. So you finally get to do the engineering. That's a promotion, and everybody in this room can take it.</p>
+        </div>
+        <aside class="notes">The fear is that this deskills you. It's the opposite. Programming was always the consequence of engineering, not the engineering itself. Agents collapse the consequence — so you finally get to do the engineering. That's a promotion, and everyone in this room can take it.
+
+— backstage —
+The emotional spine. Name the fear, then reframe it. By the end you leave with one artifact that makes the promotion real (the harness) and the model that organizes it (V&V).</aside>
+      </section>
+
+      <!-- ══ SECTION 1 · THE MAP ══ -->
+
+      <!-- 5 · DIVIDER 01 -->
+      <section class="violet" data-bar="Where we are">
+        <div class="body">
+          <p class="divider-num anim">01</p>
+          <h2 class="divider-title anim">Where we are</h2>
+          <p class="subtitle anim" style="margin-top:24px;">An honest pin on the map before we move.</p>
+        </div>
+      </section>
+
+      <!-- 6 · MAP · 8 stages in 3 acts (+ article QR) -->
+      <section class="tint" data-bar="Maturity map">
+        <div class="body">
+          <p class="eyebrow anim">8 stages of AI engineering maturity</p>
+          <h2 class="title anim">First <span class="accent">you</span> level up. Then the <span class="accent">team</span> does. Then the <span class="accent">factory</span> runs itself.</h2>
+          <div class="feature-grid cols-3 anim" style="margin-top:32px;">
+            <div class="card feature shadow">
+              <h3>Act I · You + the tool</h3>
+              <p style="line-height:1.75;">
+                <strong>1 · Vacuum</strong> — no AI strategy<br>
+                <strong>2 · Drift</strong> — one dev quietly 10×s<br>
+                <strong>3 · Islands</strong> <span class="accent">← you are here</span><br>fast devs, unaligned team
+              </p>
+            </div>
+            <div class="card feature shadow">
+              <h3>Act II · The team</h3>
+              <p style="line-height:1.75;">
+                <strong>4 · Standardize</strong> — fund the capability<br>
+                <strong>5 · Workflow redesign</strong> — specs before code<br>
+                <strong>6 · Operating system</strong> — agents are teammates
+              </p>
+            </div>
+            <div class="card feature shadow">
+              <h3>Act III · The factory</h3>
+              <p style="line-height:1.75;">
+                <strong>7 · Bright factory</strong> — agents ship, you supervise<br>
+                <strong>8 · Autonomous</strong> — runs on triggers
+              </p>
+            </div>
+          </div>
+          <div class="anim" style="margin-top:28px; display:flex; align-items:center; gap:22px;">
+            <div style="background:#fff; padding:12px; border-radius:var(--radius-lg); box-shadow:var(--bs-medium);">
+              <img src="resources/8-stages-qr.svg" alt="QR code linking to upsun.com/blog/8-stages-ai-engineering-maturity" style="display:block; width:132px; height:132px;">
+            </div>
+            <div>
+              <p class="mono anim" style="font-size:21px;">upsun.com/blog/8-stages-ai-engineering-maturity</p>
+              <p class="anim" style="font-size:18px; opacity:0.72; margin-top:6px;">The full breakdown. Most agencies here are at Stage 3, a few at 4 or 5.</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Eight stages, but think of it as three acts. Act one is you and the tool: from no strategy, to one dev quietly 10x-ing, to the Islands — fast individuals, an unaligned team. That's where most agencies in this room are: Stage 3, a few of you at 4 or 5. Act two is the team: you standardize, redesign the workflow around specs, until agents are teammates. Act three is the factory: agents ship while you supervise, then it runs on triggers. Don't memorize it — just find yourself. Scan the QR for the full write-up.
+
+— backstage —
+Credit Steve Yegge's individual levels, reframed to the org/agency. The 3-act grouping is the clarity device — walk the acts, don't read all 8. QR → upsun.com/blog/8-stages-ai-engineering-maturity. Land the pin on Islands; it sets up the symptom slide next.</aside>
+      </section>
+
+      <!-- 7 · STATEMENT · the symptom -->
+      <section data-bar="The Islands">
+        <div class="body center">
+          <h2 class="title anim">"One developer, two dozen agents."</h2>
+          <p class="lead anim" style="margin-top:28px;">Individual output scales. The team inherits <span class="accent">coordination debt</span>: merge hell, and features nobody asked for.</p>
+          <p class="lead anim" style="margin-top:16px;">Scaling the individual only <span class="accent">deepens</span> the bottleneck, a faster horse, not a factory.</p>
+        </div>
+        <aside class="notes">Scaling the individual only deepens the bottleneck. It's a faster horse, not a factory. You can't tool your way out — you redesign the work. And one honest word: don't skip stages. The pain of each one is the lesson that earns the next. The hype is loud; the evidence is quieter. Treat every promise today, including mine, with care.
+
+— backstage —
+The honest-caveat beat is folded in here verbally (no separate slide) to hold time.</aside>
+      </section>
+
+      <!-- ══ SECTION 2 · THE LEVER ══ -->
+
+      <!-- 8 · DIVIDER 02 -->
+      <section class="violet" data-bar="The Lever">
+        <div class="body">
+          <p class="divider-num anim">02</p>
+          <h2 class="divider-title anim">The Lever</h2>
+          <p class="subtitle anim" style="margin-top:24px;">Stop trying to go faster. Change what you do.</p>
+        </div>
+      </section>
+
+      <!-- 9 · TWO-COL · role inversion -->
+      <section data-bar="The Lever">
+        <div class="body">
+          <p class="eyebrow anim">The role inverts</p>
+          <h2 class="title anim">From executioner to architect</h2>
+          <div class="two-col anim" style="margin-top:48px;">
+            <div class="card feature shadow"><h3>Yesterday</h3><p class="strike">Write the module. Review the diff line by line. Be the execution unit.</p></div>
+            <div class="card feature shadow"><h3>Today <span class="badge human">Architect</span></h3><p>Define what's true, set the constraints, demand the proof. Architect of Intent &amp; Governor.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Yesterday you were the execution unit — write the module, review the diff line by line. Today you define what's true, set the constraints, and demand the proof. That's the new job description.</aside>
+      </section>
+
+      <!-- 10 · STATEMENT · keystone + forcing function -->
+      <section class="ink" data-bar="The keystone">
+        <div class="body center">
+          <h2 class="title display anim" style="font-size:96px;">If it's not proven,<br><span class="accent">it doesn't exist.</span></h2>
+          <p class="lead anim" style="margin-top:32px; max-width:46ch; margin-left:auto; margin-right:auto;">Verification first isn't the finish line, it's the forcing function. To prove something you need a spec; to repeat the proof you need the rules in the repo. It drags the rest into place.</p>
+        </div>
+        <aside class="notes">If it's not proven, it doesn't exist. Say it slowly — you'll repeat it at the close. And verification-first isn't the finish line, it's the forcing function: to prove something you need a definition of done (a spec), and to repeat the proof you need the rules in the repo (context). Verification drags standardization and workflow redesign in behind it.</aside>
+      </section>
+
+      <!-- 11 · FLYWHEEL · first reveal -->
+      <section class="tint" data-bar="The loop">
+        <div class="body">
+          <p class="eyebrow anim">The loop, not the pipeline</p>
+          <div class="flywheel anim">
+            <div class="step"><span class="n">01</span><div class="t">Bet</div><div class="s">intent + signals</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><span class="n">02</span><div class="t">Context</div><div class="s">AGENTS.md · schemas</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><span class="n">03</span><div class="t">Execute</div><div class="s">agents, in parallel</div></div>
+            <div class="arrow">→</div>
+            <div class="step vv"><span class="n">04</span><div class="t">Verify + Validate</div><div class="s">evidence</div></div>
+          </div>
+          <p class="feedback dim anim">↩ every result feeds back into Context, we'll close that loop shortly</p>
+        </div>
+        <aside class="notes">This is a loop, not a pipeline: Bet, Context, Execute, then Verify and Validate. And every result feeds back into context — we'll close that loop shortly.</aside>
+      </section>
+
+      <!-- ══ SECTION 3 · CENTERPIECE · V&V ══ -->
+
+      <!-- 12 · DIVIDER 03 -->
+      <section class="violet" data-bar="Validation & Verification">
+        <div class="body">
+          <p class="divider-num anim">03</p>
+          <h2 class="divider-title anim">The Architect's Craft</h2>
+          <p class="subtitle anim" style="margin-top:24px;">Validation &amp; Verification: the heart of the talk.</p>
+        </div>
+      </section>
+
+      <!-- 13 · TWO-COL · V vs V -->
+      <section data-bar="V & V">
+        <div class="body">
+          <p class="eyebrow anim">Two different questions</p>
+          <h2 class="title anim">Verification is not Validation</h2>
+          <div class="two-col anim" style="margin-top:48px;">
+            <div class="card feature shadow"><h3>Verification <span class="badge machine">machine</span></h3><p>Did we build it <strong>right</strong>? Unit tests, types, linting, security, clarity.</p></div>
+            <div class="card feature shadow"><h3>Validation <span class="badge human">you</span></h3><p>Did we build the <strong>right thing</strong>? Intent, end-to-end behavior, alignment.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Verification asks: did we build it right? Validation asks: did we build the right thing? Two completely different questions — and we'll keep them straight all the way through.</aside>
+      </section>
+
+      <!-- 14 · CODE · the silent money bug (THE DEMO SETUP) -->
+      <section data-bar="V & V">
+        <div class="body">
+          <p class="eyebrow anim">Verification can't see this · every Magento dev knows tax rounding</p>
+          <h2 class="title anim" style="font-size:54px;">Passes every gate. Still wrong.</h2>
+          <pre class="anim" style="margin-top:28px;"><code data-trim data-line-numbers="5-6|10-11" class="language-php">
+public function ruleTotal(array $lines): float
+{
+    $total = 0.0;
+    foreach ($lines as $line) {
+        $price = $line['unit_price_cents'] / 100;            // money → float
+        $total += round($price * $line['qty'] * 1.0825, 2);  // 8.25% tax, per line
+    }
+    return round($total, 2);
+}
+// phpstan: green · phpunit: green · lint: green · spec: met
+// 3 lines: $64.92 ✓   ·   10k lines: off by $8.25   ·   100k: off by $82.50
+          </code></pre>
+          <p class="feedback dim anim">↩ no machine flagged it, only validation against the contract does</p>
+        </div>
+        <aside class="notes">This passes every gate — phpstan, phpunit, lint, the spec. And it's still wrong. It holds money in floats and rounds tax on every line — so the error compounds: nothing at three lines, eight dollars off at ten thousand, eighty-two fifty at a hundred thousand. You know this one: Magento literally lets you round tax per line or per total, and getting it wrong in custom pricing code drifts the ledger. No machine flagged it. Only validation against the contract catches it.
+
+— backstage —
+THE DEMO (~2-3 min) is reinstated later (slide 33). Here just plant it. Live runner: `php bin/bench.php` from the demo repo (github.com/gmoigneu/scd-demo), branch demo/invoice-tax. Show phpstan+phpunit green, then the ledger drift $0.00 → $8.25 → $82.50, same code. Why no machine catches it: float arithmetic is valid PHP; no analyser rule says "this should have been integer cents." Contract lives in doc/adr/0002 + AGENTS.md, enforced by the Critic agent + a reconciliation e2e. Recorded fallback if Wi-Fi fails. NOTE: repo is currently the Shopware-era demo — reskin a Magento branch before the talk, or keep narration framework-agnostic.</aside>
+      </section>
+
+      <!-- 15 · FEATURE GRID · three layers -->
+      <section class="tint" data-bar="V & V">
+        <div class="body">
+          <p class="eyebrow anim">Three layers · hand the first two to the machine</p>
+          <h2 class="title anim">Where each one runs</h2>
+          <div class="feature-grid cols-3 anim">
+            <div class="card feature shadow"><span class="icon-chip">1</span><h3>Verify <span class="badge machine">machine</span></h3><p>The harness proves it. Fully automatable.</p></div>
+            <div class="card feature shadow"><span class="icon-chip">2</span><h3>Validate vs spec <span class="badge machine">machine</span></h3><p>e2e / Gherkin, checkable because intent is written down.</p></div>
+            <div class="card feature shadow"><span class="icon-chip">3</span><h3>Is the Bet right? <span class="badge human">you</span></h3><p>The one thing that never delegates. Your judgment.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Three layers. The harness verifies. The spec lets you validate automatically. But "is the Bet right?" — that's the one thing that never delegates. Hand verification to the machine, so you can spend yourself on validation. The new craft is judgment, not typing.
+
+— backstage —
+The "ascension" line is folded in here (no separate slide) to hold time.</aside>
+      </section>
+
+      <!-- 16 · FEATURE GRID · the harness -->
+      <section data-bar="The harness">
+        <div class="body">
+          <p class="eyebrow anim">The instrument: the harness</p>
+          <h2 class="title anim">Evidence over trust</h2>
+          <div class="feature-grid cols-2 anim">
+            <div class="card feature shadow"><span class="icon-chip"><img src="../global-resources/reveal-theme/assets/icons/security.svg" alt=""></span><h3>Tamper-proof tests <span class="badge success">read-only</span></h3><p>Tests run read-only &amp; isolated in CI; any edit to a test file is flagged in review. You trust the result because the agent couldn't touch the scorer.</p></div>
+            <div class="card feature shadow"><span class="icon-chip"><img src="../global-resources/reveal-theme/assets/icons/success.svg" alt=""></span><h3>Visual proof <span class="badge prod">Playwright</span></h3><p>UI work ships a video of the fix. No video → no review.</p></div>
+            <div class="card feature shadow"><span class="icon-chip"><img src="../global-resources/reveal-theme/assets/icons/commit.svg" alt=""></span><h3>Local gates <span class="badge dev">GrumPHP</span></h3><p>No commit that fails lint, types or tests. Ever. The agent's only path to ship is a PR.</p></div>
+            <div class="card feature shadow"><span class="icon-chip"><img src="../global-resources/reveal-theme/assets/icons/settings.svg" alt=""></span><h3>Architectural gates <span class="badge dev">Deptrac</span></h3><p>Structure enforced: no <span class="mono">ObjectManager</span> in a loop; no business logic or SQL inside a <span class="mono">.phtml</span>.</p></div>
+          </div>
+        </div>
+        <aside class="notes">This is the architect's instrument: the harness. The principle is evidence over trust. Tamper-proof tests — read-only in CI, edits flagged, so the agent can't grade its own homework like our cold-open did. Visual proof for UI — no video, no review. Local gates that block a bad commit. Architectural gates that enforce Magento structure. These are moves you can make this week, on a single module.
+
+— backstage —
+Simplified per feedback: dropped the DSSE / in-toto attestation jargon — "read-only + edit-detection" is the defensible, explainable core.</aside>
+      </section>
+
+      <!-- 17 · CODE · architectural lint (Deptrac), real red run -->
+      <section data-bar="The harness">
+        <div class="body">
+          <p class="eyebrow anim">The class of bug you prevent, not re-find</p>
+          <h2 class="title anim" style="font-size:54px;">Encode the rule once</h2>
+          <pre class="anim" style="margin-top:24px;"><code data-trim class="language-yaml">
+# deptrac.yaml — enforce Magento's layered architecture
+ruleset:
+  Presentation:    [ServiceContract]  # Controller / Block / ViewModel
+  ServiceContract: [Model]            # Api/ interfaces + repositories
+  Model:           [Persistence]      # domain → Model/ResourceModel
+  Persistence:     ~                  # the DB layer is a leaf
+          </code></pre>
+          <pre class="anim" style="margin-top:14px;"><code data-trim class="language-bash">
+$ vendor/bin/deptrac analyse
+  Vendor\Promo\Block\Cart\Discount must not depend on Vendor\Promo\Model\ResourceModel\Rule
+  reason: a Block may only reach a ServiceContract — inject RuleRepository
+  Violations  1            # red, before a human ever opens the PR
+          </code></pre>
+        </div>
+        <aside class="notes">You encode the rule once, in Magento's own grain. The presentation layer — controllers, blocks, view models — may only reach a service contract, the Api interfaces. It must never touch a ResourceModel directly. Run Deptrac, and a block that queries the database goes red before a human ever opens the PR. You stop re-finding the same layering breaks and N+1s — you prevent them.
+
+— backstage —
+The violation is the classic Magento smell: a Block reaching straight into a ResourceModel/collection instead of injecting the repository (service contract). Real output pattern from the demo repo (branch demo/deptrac-violation, kept off main). Complementary: bitexpert/phpstan-magento ships rules for the ObjectManager / in-loop anti-patterns; Deptrac handles the layering.</aside>
+      </section>
+
+      <!-- 18 · CODE · enforcement in the environment (GrumPHP) -->
+      <section data-bar="The harness">
+        <div class="body">
+          <p class="eyebrow anim">Success is silent. Failures are verbose.</p>
+          <h2 class="title anim" style="font-size:54px;">The agent can't skip the gate</h2>
+          <pre class="anim" style="margin-top:24px;"><code data-trim class="language-yaml">
+# grumphp.yml — runs on every commit
+grumphp:
+  tasks:
+    phplint:  ~
+    phpstan:  { configuration: phpstan.neon }
+    deptrac:  { depfile: deptrac.yaml }
+    phpunit:  ~
+          </code></pre>
+          <p class="lead anim" style="margin-top:20px; max-width:44ch;">A rule in <span class="mono">AGENTS.md</span> is a suggestion the model can forget. A commit hook is not. Silent on pass; verbose, and blocking, on fail.</p>
+        </div>
+        <aside class="notes">Enforcement lives in the environment, not the prompt. A rule in AGENTS.md is a suggestion the model can forget. A commit hook is not. The agent's only path to ship is a commit — and that commit runs the same checks CI runs. Success is silent; failure is verbose and blocking.
+
+— backstage —
+Sessions survive 20–50 context compacts because the rules live in hooks + CI, not the context window.</aside>
+      </section>
+
+      <!-- 19 · CODE · proof attached to a PR -->
+      <section data-bar="The harness">
+        <div class="body">
+          <p class="eyebrow anim">What "proven" looks like</p>
+          <h2 class="title anim" style="font-size:60px;">The PR carries its own evidence</h2>
+          <pre class="anim" style="margin-top:36px;"><code data-trim data-line-numbers="1-3|5-7" class="language-markdown">
+### Verification
+- tests: 142 passed, 0 failed   ·   tests read-only in CI
+- edits to test files: none flagged
+
+### Validation
+- e2e (MFTF / Playwright): cart-price-rule.feature 7/7 green
+- proof: ./artifacts/cart-rule-flow.webm
+          </code></pre>
+        </div>
+        <aside class="notes">Here's what "proven" looks like. The PR carries its own evidence — test results, confirmation the agent didn't touch the tests, the end-to-end run, and a video of the flow. You read the evidence, not the diff. No proof, the work doesn't exist.
+
+— backstage —
+MFTF = Magento Functional Testing Framework; pair with Playwright for storefront flows. Simplified from the prior signed-attestation version per feedback.</aside>
+      </section>
+
+      <!-- 20 · STATEMENT · the input side -->
+      <section class="tint" data-bar="Context">
+        <div class="body center">
+          <h2 class="title anim">Better input → better output → <span class="accent">cheaper proof.</span></h2>
+          <p class="lead anim" style="margin-top:28px;">Verification is only easy when the input was good. Context is a supply chain.</p>
+        </div>
+        <aside class="notes">Better input gives better output — and cheaper proof. Verification is only easy when the input was good. Context is a supply chain.</aside>
+      </section>
+
+      <!-- 21 · FEATURE GRID · context is more than code -->
+      <section data-bar="Context">
+        <div class="body">
+          <p class="eyebrow anim">Context is more than code</p>
+          <h2 class="title anim">Four things the agent needs to know</h2>
+          <div class="feature-grid cols-2 anim">
+            <div class="card feature shadow"><h3>Intent</h3><p>The Bet, the constraints, the invariants, what "done" means and what must never break.</p></div>
+            <div class="card feature shadow"><h3>Environment</h3><p>The live codebase, dependencies, tests, runtime, the system as it actually is.</p></div>
+            <div class="card feature shadow"><h3>History</h3><p>PRs, commits, and the <em>why</em> behind past decisions, ADRs, not just the diff.</p></div>
+            <div class="card feature shadow"><h3>People</h3><p>Contributors and ownership, who understands which system, and the scars they carry.</p></div>
+          </div>
+        </div>
+        <aside class="notes">The agent needs four things: intent, environment, history, and people. Code is the smallest part. Intent, history, and the people who carry the scars — that's what agents and juniors usually lack.</aside>
+      </section>
+
+      <!-- 22 · STAT · context isn't free (merged) -->
+      <section class="tint" data-bar="Context">
+        <div class="body">
+          <p class="eyebrow anim">Context isn't free</p>
+          <div class="stat-hero anim">
+            <div class="num">97<span class="u">→77%</span></div>
+            <div class="meta">
+              <span class="l">one bloated skill file dropped task accuracy</span>
+              <span class="tag failed"><span class="dot"></span>more context, worse output</span>
+            </div>
+          </div>
+          <p class="body-text anim" style="margin-top:40px; max-width:46ch;">10,000 generated lines of "skills" made it <em>worse</em>. Deleting 95%, down to 553 hand-written gotchas, fixed accuracy and cut eval time <strong>68 min → 6 min</strong>. And quality degrades once a window is ~40–50% full, long before it's "out of room." More isn't better. <strong>You curate.</strong></p>
+        </div>
+        <aside class="notes">Context isn't free. One team's ten thousand generated lines of "skills" dropped accuracy from 97 to 77 percent. Deleting 95% — down to 553 hand-written gotchas — fixed it and cut eval time from 68 minutes to 6. And there's a tipping point: quality strains around 40–50% of the window full, long before it's actually full. Million-token windows don't save you. The model already knows how to code; it needs the landmines. So earn every line of context with a failing eval.
+
+— backstage —
+Merged two prior slides (Tipping Point + "deleted 95%") into one to cut repetition. The 40–50% figure is directional — say so.</aside>
+      </section>
+
+      <!-- 23 · FEATURE GRID · managing context -->
+      <section data-bar="Context">
+        <div class="body">
+          <p class="eyebrow anim">The risk isn't too little context, it's poisoned context</p>
+          <h2 class="title anim">So curate it, surgically</h2>
+          <div class="feature-grid cols-2 anim">
+            <div class="card feature shadow"><h3>Persist</h3><p><code>AGENTS.md</code> + decision records: keep Intent &amp; History outside the chat window.</p></div>
+            <div class="card feature shadow"><h3>Select</h3><p>Pull only what this task needs. Query, don't dump. Disable noisy tools.</p></div>
+            <div class="card feature shadow"><h3>Compress</h3><p>At the tipping point, summarize and start fresh.</p></div>
+            <div class="card feature shadow"><h3>Isolate</h3><p>Parallel agents so one bad decision can't poison the next.</p></div>
+          </div>
+        </div>
+        <aside class="notes">The risk isn't too little context — it's poisoned context. Stale info degrades output more than absence. So curate surgically: persist intent and history outside the chat, select only what this task needs, compress at the tipping point, and isolate agents so one bad decision can't poison the next.</aside>
+      </section>
+
+      <!-- 24 · CODE · the AGENTS.md you hand-write -->
+      <section data-bar="Context">
+        <div class="body">
+          <p class="eyebrow anim">The one file you hand-write</p>
+          <h2 class="title anim" style="font-size:48px;">AGENTS.md owns judgment, nothing a tool can enforce</h2>
+          <pre class="anim" style="margin-top:24px;"><code data-trim data-line-numbers="1-4|6-9" class="language-markdown">
+## Judgment Boundaries
+NEVER:  weaken a test or gate to get green · add a dependency without discussion · guess on ambiguous specs
+ASK:    before a schema migration (declarative_schema) · before deleting files
+ALWAYS: explain the plan first · say what you didn't verify
+
+# Before adding any line, ask:
+linter can enforce it? → tool config      CI can enforce it? → the pipeline
+hook can enforce it?   → the hook          none of the above? → AGENTS.md
+          </code></pre>
+          <p class="feedback dim anim">keep it &lt; 60 lines · every line earned by a specific failure · an open standard since Dec 2025</p>
+        </div>
+        <aside class="notes">AGENTS.md is the one file you hand-write. It owns judgment — the things no tool can enforce. Never weaken a gate to get green. Ask before a schema migration. Always explain the plan first. And before you add any line, ask: can a linter, CI, or a hook enforce this? If yes, it doesn't belong here. Keep it under 60 lines, every line earned by a real failure.
+
+— backstage —
+The Monday-morning artifact, loaded natively by any agent. LLM-generated context files cut task success and add ~20% cost — point at the authority, don't restate what a tool already checks. AGENTS.md donated to the Linux Foundation (AAIF), Dec 2025.</aside>
+      </section>
+
+      <!-- 25 · STATEMENT + EXAMPLE · schemas & a concrete ADR -->
+      <section class="tint" data-bar="Context">
+        <div class="body">
+          <div class="two-col">
+            <div>
+              <p class="eyebrow anim">Standardized parts</p>
+              <h2 class="title anim" style="font-size:56px;">Give the agent the <span class="accent">mold</span>, not just the goal.</h2>
+              <p class="lead anim" style="margin-top:24px; max-width:34ch;">Typed interfaces, schemas and ADRs are machine-checkable contracts. "Did it guess right?" becomes "does it conform?"</p>
+            </div>
+            <pre class="anim" style="font-size:21px;"><code data-trim class="language-markdown">
+# ADR 0002 · Money is integer cents
+Status: Accepted · 2026-06-09
+
+## Decision
+Hold and compute money in minor units (cents).
+Apply tax or discount once, on the subtotal.
+
+## Consequences
+Ledger drift was $82.50 at 100k lines. Now $0.00.
+No analyser enforces this — the Critic agent cites it.
+            </code></pre>
+          </div>
+        </div>
+        <aside class="notes">Give the agent the mold, not just the goal. Typed interfaces, schemas, and ADRs are machine-checkable contracts. "Did it guess right?" becomes "does it conform?" Here's the actual decision — money is integer cents, round once — no analyser enforces it, so the Critic agent cites it. One tip: name things with frameworks the model already knows — ADR, arc42, Clean Architecture. A known word loads a whole rich concept for free; a bespoke convention makes it guess.
+
+— backstage —
+Semantic-anchors point folded in verbally (cut the standalone slide). This ADR is the judgment boundary written down; full record in the demo repo doc/adr/0002.</aside>
+      </section>
+
+      <!-- 26 · STATEMENT + EXAMPLE · Bets & a concrete Bet (Magento cart price rule) -->
+      <section data-bar="Intent as Bets">
+        <div class="body">
+          <div class="two-col">
+            <div>
+              <h2 class="title anim" style="font-size:56px;">Stop writing <span class="strike">requirements.</span> Start writing <span class="accent">Bets.</span></h2>
+              <p class="lead anim" style="margin-top:24px; max-width:34ch;">A requirement prescribes a solution. A Bet states what you believe, how you'll know, and what you won't risk.</p>
+            </div>
+            <pre class="anim" style="font-size:21px;"><code data-trim class="language-markdown">
+# Bet · Cart price rule
+Appetite: 2 weeks · One-way door: no
+
+## Hypothesis
+A "buy 3, 10% off" automatic rule lifts units/order.
+
+## Signal (validates)
+Units per order — not discount $ given.
+
+## Guardrail
+Exclusive with coupons; never re-discounts reduced
+items; reconciles in credit memos.
+            </code></pre>
+          </div>
+        </div>
+        <aside class="notes">Stop writing requirements. Start writing Bets. A requirement prescribes a solution. A Bet states what you believe, how you'll know, and what you won't risk — an appetite, a signal, and a guardrail. Note the signal is units per order, not dollars discounted — that's exactly what the e2e validates against.
+
+— backstage —
+Appetite + the one-way-door flag come from Shape Up (Ryan Singer); the record form is Nygard's ADR (2011). This is the cart-price-rule Bet the Grilling Session and the demo both resolve.</aside>
+      </section>
+
+      <!-- 27 · DIALOGUE · the Grilling Session (Magento) -->
+      <section class="tint" data-bar="The Grilling Session">
+        <div class="body">
+          <p class="eyebrow anim">The Grilling Session · Ask Mode</p>
+          <h2 class="title anim" style="font-size:60px;">The agent interviews the architect</h2>
+          <div class="dialogue anim" style="margin-top:44px;">
+            <div class="turn architect"><div class="who">Architect</div><div class="says">"Before any code, interview me on the edge cases of a cart price rule for this Magento 2 store. Don't write files yet."</div></div>
+            <div class="turn agent"><div class="who">Agent</div><div class="says">"Does it stack with coupon codes or is it exclusive? How does it interact with rule priority and 'discard subsequent rules'? Which websites and customer groups?"</div></div>
+            <div class="turn architect"><div class="who">Architect</div><div class="says">"Exclusive, if a coupon applies, skip this rule. Respect priority, stop on first match. All websites, logged-in customers only. Log it to the Bet Register."</div></div>
+          </div>
+        </div>
+        <aside class="notes">Before any code, you have the agent interview you. "Does it stack with coupons or is it exclusive? How does it play with rule priority and 'discard subsequent rules'? Which websites and customer groups?" And you answer: exclusive, respect priority, stop on first match, logged-in customers only, log it to the Bet Register. By the way — this very talk was built exactly this way.
+
+— backstage —
+If time allows, add the refund edge verbally: discounts must recalculate correctly on partial credit memos, and the rule discount must not double-count against tax.</aside>
+      </section>
+
+      <!-- 28 · CODE · the reusable /grill-me prompt -->
+      <section class="ink" data-bar="The Grilling Session">
+        <div class="body">
+          <p class="eyebrow anim">Steal this prompt</p>
+          <h2 class="title anim" style="font-size:58px; margin-bottom: 20px">/grill-me</h2>
+          <pre class="anim" style="margin-top:24px; flex-shrink:0;"><code data-trim class="language-markdown" style="min-height: auto">
+Interview me relentlessly about every aspect of this plan until we
+reach a shared understanding. Walk down each branch of the decision
+tree, resolving dependencies one at a time. For each question, give
+your recommended answer. Ask the questions one at a time.
+          </code></pre>
+          <p class="lead anim" style="margin-top:104px; max-width:46ch;">The conversation <em>is</em> the asset. You don't even review the spec it writes afterward, you already aligned.</p>
+        </div>
+        <aside class="notes">Steal this prompt. "Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Ask one question at a time, and give your recommended answer each time." The conversation is the asset — you don't even review the spec it writes afterward, because you aligned on the way there.</aside>
+      </section>
+
+      <!-- 29 · TWO-COL · Ask vs Implement -->
+      <section class="tint" data-bar="Two modes">
+        <div class="body">
+          <p class="eyebrow anim">Two modes</p>
+          <h2 class="title anim">Grill first, then let it run</h2>
+          <div class="two-col anim" style="margin-top:48px;">
+            <div class="card feature shadow"><h3>Ask Mode <span class="badge human">human-in-loop</span></h3><p>Explore and brainstorm. <strong>Cannot write files.</strong> Ends in the Grilling Session and an agreed plan.</p></div>
+            <div class="card feature shadow"><h3>Implement Mode <span class="badge dev">the Night Shift</span></h3><p>Autonomous execution against the agreed plan, proven by the harness when you're back.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Two modes. Ask Mode explores — it cannot write files, and it ends in the grilling session and an agreed plan. Then Implement Mode runs autonomously against that plan — the night shift — and the harness proves it for you when you're back. The plan is the contract that makes away-from-keyboard trustworthy.</aside>
+      </section>
+
+      <!-- 30 · FEATURE GRID · Upsun preview envs -->
+      <section data-bar="Validate in a running system">
+        <div class="body">
+          <p class="eyebrow anim">Validation needs a running system</p>
+          <h2 class="title anim">A preview environment per Bet</h2>
+          <div class="feature-grid cols-2 anim">
+            <div class="card feature shadow"><span class="icon-chip"><img src="../global-resources/reveal-theme/assets/icons/deploy.svg" alt=""></span><h3>Spin it up <span class="badge prod">Upsun</span></h3><p>Every change gets a real, ephemeral environment, not a mock. The Magento store actually runs.</p></div>
+            <div class="card feature shadow"><span class="icon-chip"><img src="../global-resources/reveal-theme/assets/icons/success.svg" alt=""></span><h3>Two checks run there</h3><p><strong>e2e</strong> (MFTF / Playwright) against the Bet's signals · an <strong>evaluator agent</strong> judges, separate from the one that built it.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Validation needs a running system, so every Bet gets a real, ephemeral preview environment — a full Magento store, not a mock. Two checks run there: end-to-end tests against the Bet's signals, and an evaluator agent that judges the work — separate from the one that built it. Nothing grades its own work.
+
+— backstage —
+This is the earned Upsun moment inside the V&V core (distinct from the infra slide later). The preview env is where validation stops being opinion and becomes evidence.</aside>
+      </section>
+
+      <!-- 31 · CODE · the adversarial Critic agent -->
+      <section data-bar="Nothing grades its own work">
+        <div class="body">
+          <p class="eyebrow anim">Generator ≠ evaluator</p>
+          <h2 class="title anim" style="font-size:50px;">A second agent, told to reject you</h2>
+          <pre class="anim" style="margin-top:24px;"><code data-trim class="language-markdown">
+# .agents/critic.md
+You are a rigorous Critic Agent. Skeptical by design: reject code
+that violates the Spec or an ADR, even if it "works" and every
+test is green. Favour false positives. Judge in a fresh session.
+
+→ ## Verdict: NOT READY TO MERGE
+  Totals · rule discount holds money in float, rounds tax per line
+  Violated: doc/adr/0002 · Remediation: integer cents, round once
+          </code></pre>
+          <p class="feedback dim anim">build with the cheap model · review with the strong one, in a fresh session</p>
+        </div>
+        <aside class="notes">The generator is never the evaluator. You run a second agent, told to reject you — skeptical by design, favouring false positives, judging in a fresh session. It catches exactly the float-money bug that every green test missed earlier. Build with the cheap model; review with the strong one.
+
+— backstage —
+Agent-agnostic: the drop-in is a tool-neutral prompt; .agents/critic.md is just the convention shown. This is what runs live on the next slide.</aside>
+      </section>
+
+      <!-- 32 · LIVE DEMO · the harness catches what the gates miss (QR to repo) -->
+      <section data-bar="Live demo">
+        <div class="body">
+          <div class="two-col">
+            <div>
+              <p class="eyebrow anim">Live · ~3 min</p>
+              <h2 class="title anim" style="font-size:50px;">Green gates. The harness still says no.</h2>
+              <div class="anim" style="margin-top:28px; display:flex; flex-direction:column; gap:14px; max-width:40ch;">
+                <div class="card feature shadow" style="padding:18px 22px;"><h3 style="font-size:24px;">1 · Ship it? <span class="badge machine">all gates green</span></h3><p style="font-size:20px;">A cart-price-rule PR. phpstan, phpunit, Deptrac, GrumPHP all pass.</p></div>
+                <div class="card feature shadow" style="padding:18px 22px;"><h3 style="font-size:24px;">2 · Critic: <span class="badge human">NOT READY</span></h3><p style="font-size:20px;">Reads ADR 0002 + the Bet's Guardrail. Money in floats → $82.50 off at 100k.</p></div>
+                <div class="card feature shadow" style="padding:18px 22px;"><h3 style="font-size:24px;">3 · Fix → reconcile <span class="badge success">$0.00</span></h3><p style="font-size:20px;">Integer cents, round once. Credit memos balance. Gates still green.</p></div>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;">
+              <div class="anim" style="background:#fff; padding:32px; border-radius:var(--radius-lg); box-shadow:var(--bs-medium);">
+                <img src="resources/scd-demo-qr.svg" alt="QR code linking to github.com/gmoigneu/scd-demo" style="display:block; width:340px; height:340px;">
+              </div>
+              <p class="anim mono" style="font-size:24px;">github.com/gmoigneu/scd-demo</p>
+              <p class="anim" style="font-size:18px; opacity:0.7;">scan to clone · run the gates, then <span class="mono">php bin/bench.php</span></p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Here's the whole thing, live. A cart-price-rule PR — every gate green. The Critic reads ADR 0002 and the Bet's guardrail and says: not ready to merge — money's in floats, you'll be eighty-two fifty off at a hundred thousand lines. We fix it — integer cents, round once — the credit memos reconcile to zero, and the gates are still green. Verification passed the whole time. Only validation caught it. Scan the QR to clone it and run it yourself.
+
+— backstage —
+~3 min, live, recorded fallback. Repo: github.com/gmoigneu/scd-demo. Start on branch demo/invoice-tax. Beat 0: gates green. Beat 1: Critic → NOT READY, cites doc/adr/0002 + the Bet Guardrail. Beat 2: agent applies the remediation. Beat 3: php bin/bench.php → $82.50 → $0.00, gates still green. Full runbook in DEMO.md. Reskin to a Magento branch before the talk if possible.</aside>
+      </section>
+
+      <!-- 33 · FLYWHEEL · close the loop -->
+      <section class="tint" data-bar="The loop">
+        <div class="body">
+          <p class="eyebrow anim">The factory learns</p>
+          <div class="flywheel anim">
+            <div class="step"><span class="n">01</span><div class="t">Bet</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><span class="n">02</span><div class="t">Context</div></div>
+            <div class="arrow">→</div>
+            <div class="step"><span class="n">03</span><div class="t">Execute</div></div>
+            <div class="arrow">→</div>
+            <div class="step vv"><span class="n">04</span><div class="t">Verify + Validate</div></div>
+          </div>
+          <p class="feedback anim">↩ every result, pass <em>or</em> fail, becomes context for the next iteration · the ratchet</p>
+        </div>
+        <aside class="notes">And the factory learns. Every result — pass or fail — becomes context for the next iteration. Failures become permanent rules; successes become patterns. That's the ratchet: the system gets smarter every cycle.</aside>
+      </section>
+
+      <!-- ══ SECTION 4 · WHERE IT'S GOING ══ -->
+
+      <!-- 34 · HORIZON · Stages 6-8 collapsed into one -->
+      <section class="violet" data-bar="Roadmap">
+        <div class="body">
+          <p class="eyebrow anim">Where this goes once the loop runs itself · most teams are 2–3 years out</p>
+          <h2 class="title anim">From your laptop to the factory</h2>
+          <div class="feature-grid cols-3 anim" style="margin-top:40px;">
+            <div class="card feature shadow"><span class="icon-chip">6</span><h3>Operating System</h3><p>"Three engineer slots, five agent slots." Context becomes shared infrastructure that bottles the team's battle scars.</p></div>
+            <div class="card feature shadow"><span class="icon-chip">7</span><h3>Bright Factory</h3><p>You manage the <strong>Risk Envelope</strong>, not the sprint. "Roll back if the canary shows +2% latency."</p></div>
+            <div class="card feature shadow"><span class="icon-chip">8</span><h3>Autonomous</h3><p>The loop goes <strong>recursive</strong>: agents read production signals and write their own Bets.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Quickly, the horizon. Stage 6, the operating system: agents are teammates, "three engineer slots, five agent slots," and context becomes shared infrastructure. Stage 7, the bright factory: you manage the risk envelope, not the sprint — "roll back if the canary shows two percent more latency." Stage 8, autonomous: the loop goes recursive — agents read production signals and write their own Bets. Keep the skeptic's tone — most teams are two to three years out.
+
+— backstage —
+Collapsed the three former Stage-6/7/8 statement slides into one grid to hold time. Role arc: coder → context architect → conductor → hypervisor (Agor framing — cite the model, not settled fact).</aside>
+      </section>
+
+      <!-- 35 · STATEMENT · Upsun infra -->
+      <section data-bar="The infrastructure">
+        <div class="body center">
+          <p class="eyebrow anim">The infrastructure reality</p>
+          <h2 class="title anim">None of this works on a <span class="accent">laptop.</span></h2>
+          <p class="subtitle anim" style="margin-top:28px; max-width:44ch; margin-left:auto; margin-right:auto;">The autonomous factory needs shared, ephemeral, sandboxed, observable infrastructure, billed per <strong>workflow</strong>, not per seat. That's the problem we work on at Upsun.</p>
+        </div>
+        <aside class="notes">None of this works on a laptop. The autonomous factory needs shared, ephemeral, sandboxed, observable infrastructure — organized by workflow, not by users or agents. That's the problem we work on at Upsun.
+
+— backstage —
+The category, not a pitch. State it, move on.</aside>
+      </section>
+
+      <!-- ══ SECTION 4½ · DISPATCH · the product (trimmed) ══ -->
+
+      <!-- 36 · DISPATCH · reveal -->
+      <section class="violet" data-bar="Dispatch">
+        <div class="body">
+          <p class="eyebrow anim">The factory, productized</p>
+          <h2 class="title display anim">This is what we're building.<br><span class="accent">Upsun Dispatch.</span></h2>
+          <p class="subtitle anim" style="margin-top:28px; max-width:46ch;">Governed collaboration between agents and software teams. The workflow is the unit. The team approves. The audit trail is a first-class artifact.</p>
+          <div class="anim" style="margin-top:40px; display:flex; gap:14px; flex-wrap:wrap;">
+            <span class="tag active"><span class="dot"></span>Early access</span>
+            <span class="tag building"><span class="dot"></span>Design partners</span>
+            <span class="tag pending"><span class="dot"></span>Rolling launch this summer</span>
+          </div>
+        </div>
+        <aside class="notes">Everything I've shown you — the harness, the gates, the Bets, the loop — we're building it as a product. It's called Dispatch. Agents do the volume work; humans make the decisions that matter; and every decision is recorded. Early access with design partners now, rolling launch this summer.
+
+— backstage —
+No hard sell; it's the embodiment of the talk. Don't say "available to everyone."</aside>
+      </section>
+
+      <!-- 37 · DISPATCH · run detail (run.png) -->
+      <section class="ink" data-bar="Dispatch">
+        <div class="body">
+          <div class="two-col">
+            <div>
+              <h2 class="title anim" style="font-size:54px;">Every run carries its own <span class="accent">evidence</span></h2>
+              <div class="anim" style="margin-top:28px; display:flex; flex-direction:column; gap:12px; max-width:42ch;">
+                <div class="card feature shadow" style="padding:14px 18px;"><p style="font-size:20px;">Runs on a trigger; the plan is approved on the issue first.</p></div>
+                <div class="card feature shadow" style="padding:14px 18px;"><p style="font-size:20px;">Acts as <span class="mono">upsun-dispatch</span> — co-authored, identity-separated.</p></div>
+                <div class="card feature shadow" style="padding:14px 18px;"><p style="font-size:20px;">The context bundle it saw, the diff, the critic's findings.</p></div>
+                <div class="card feature shadow" style="padding:14px 18px;"><p style="font-size:20px;">Per-step cost — this run, <strong>$0.71</strong>.</p></div>
+              </div>
+              <p class="anim" style="margin-top:26px; font-size:18px; opacity:0.55;">Please don't ruin our launch ;)</p>
+            </div>
+            <div style="display:flex; align-items:flex-start; justify-content:center;">
+              <div class="anim" style="background:#fff; padding:12px; border-radius:var(--radius-lg); box-shadow:var(--bs-medium);">
+                <img src="resources/dispatch/run.png" alt="Dispatch run detail for 'Add idempotency keys to payments': trigger, context bundle, run timeline, plan approval, critic findings, diff, and a cost breakdown totalling $0.71" style="display:block; height:1620px; margin-top: 500px; width:auto; border-radius:6px;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">This isn't a mockup — it's a real run. One job: add idempotency keys to payments. You see the whole chain: what triggered it, the context the agent saw, its plan, the human who approved it, the diff, the critic's findings — and what it cost, seventy-one cents. That's "evidence over trust," made literal.
+
+— backstage —
+Gesture, don't read. Point at two things: the co-authored upsun-dispatch identity and the $0.71 cost. Then the on-slide wink — "please don't ruin our launch." Trimmed the six-pillars and approvals slides to hold time.</aside>
+      </section>
+
+      <!-- ══ SECTION 5 · CLOSE ══ -->
+
+      <!-- 38 · FEATURE GRID · relocations + mandate (merged) -->
+      <section class="tint" data-bar="Relocate your judgment">
+        <div class="body">
+          <p class="eyebrow anim">Relocate your judgment · the mandate</p>
+          <h2 class="title anim">Where everything moves</h2>
+          <div class="feature-grid cols-3 anim">
+            <div class="card feature shadow"><h3>Verification <span class="badge machine">machine</span></h3><p>Hash it, video it, gate it. Read the evidence, not the diff.</p></div>
+            <div class="card feature shadow"><h3>Validation <span class="badge human">you</span></h3><p>Does it match the intent? Set the signals and the envelope.</p></div>
+            <div class="card feature shadow"><h3>The Bet <span class="badge preview">your craft</span></h3><p>Is it the right thing to build? The one thing that never delegates.</p></div>
+          </div>
+        </div>
+        <aside class="notes">So here's where everything moves, and it's your mandate. Verification goes to the machine — hash it, video it, gate it; read the evidence, not the diff. Validation is yours — does it match the intent? Set the signals and the envelope. And the Bet — is it the right thing to build? — that's your craft, the one thing that never delegates.
+
+— backstage —
+Merged the former "relocations" and "do this" slides into one close grid.</aside>
+      </section>
+
+      <!-- 39 · CLOSING -->
+      <section class="violet" data-bar="Get started">
+        <div class="body">
+          <p class="eyebrow anim">The Industrial Age of software is here</p>
+          <h2 class="title anim" style="font-size:72px;">Stop shipping code that looks right. Start architecting systems that <span class="accent">prove it.</span></h2>
+          <p class="subtitle anim" style="margin-top:28px; max-width:30ch;">Multiple engineers, a fleet of agents, an impenetrable system of verification.</p>
+        </div>
+        <aside class="notes">The industrial age of software is here. Stop shipping code that looks right. Start architecting systems that prove it. Multiple engineers, a fleet of agents, an impenetrable system of verification.
+
+— backstage —
+Land the one-liner. Pause. Then the vision line, then thank-you.</aside>
+      </section>
+
+      <!-- 40 · THANK YOU -->
+      <section class="ink" data-bar="Thank you">
+        <div class="body">
+          <div class="two-col">
+            <div>
+              <p class="eyebrow anim">Thank you</p>
+              <h2 class="title display anim" style="font-size:104px;">Let's <span class="accent">build.</span></h2>
+              <p class="lead anim" style="margin-top:28px; max-width:34ch;">Questions, war stories, hot takes. Find me on LinkedIn.</p>
+              <p class="lead anim" style="margin-top:20px; max-width:34ch;">And yes: <span class="accent">like and subscribe.</span> The algorithm is also a harness.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;">
+              <div class="anim" style="background:#fff; padding:32px; border-radius:var(--radius-lg); box-shadow:var(--bs-medium);">
+                <img src="resources/linkedin-qr.svg" alt="QR code linking to linkedin.com/in/guillaumemoigneu" style="display:block; width:340px; height:340px;">
+              </div>
+              <p class="anim mono" style="font-size:24px;">linkedin.com/in/guillaumemoigneu</p>
+              <p class="anim" style="font-size:18px; opacity:0.7;">Guillaume Moigneu · Upsun</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">The real close. Hold here for Q&A. The "like and subscribe" line is the wink — deliver it deadpan, then point at the QR. Callback to the harness thesis lands the joke.</aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../global-resources/reveal-theme/reveal/dist/reveal.js"></script>
+  <script src="../global-resources/reveal-theme/reveal/dist/plugin/notes.js"></script>
+  <script src="../global-resources/reveal-theme/reveal/dist/plugin/highlight.js"></script>
+  <script>
+    // Inject the Upsun "app toolbar" into every slide (the Dispatch frame motif).
+    (function () {
+      var MARK = '<svg class="mark" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.9954 5C13.9556 5 5 13.9505 5 25.0046H14.9954C15.0185 19.4753 19.4963 15.0046 25.0092 15.0046C30.5222 15.0046 35.0046 19.4845 35.0046 25.0046H45C44.9954 13.9598 36.049 5 24.9954 5Z"/><path d="M35.0416 25.0046H15.0555C15.0555 29.332 17.8096 33.0259 21.659 34.4082V34.5793H7.5C10.8872 40.7883 17.4815 45 25.0601 45C32.6386 45 39.219 40.7883 42.6202 34.5793H28.4381V34.4082C32.2921 33.0167 35.0416 29.332 35.0416 25.0046Z"/></svg>';
+      // Slide colors live on the <section>, which reveal scales to 1920x1080 and
+      // letterboxes on non-16:9 displays. Mirror each slide's color onto reveal's
+      // full-viewport background layer so the margins bleed to the slide color, not grey.
+      var BG = { tint: '#EFEDFF', ink: '#181E21', violet: '#4D38CC' };
+      document.querySelectorAll('.reveal .slides > section').forEach(function (s) {
+        var bgKey = s.classList.contains('tint') ? 'tint'
+                  : s.classList.contains('ink') ? 'ink'
+                  : s.classList.contains('violet') ? 'violet' : null;
+        s.setAttribute('data-background-color', bgKey ? BG[bgKey] : '#FFFFFF');
+        var label = s.getAttribute('data-bar') || 'Agentic Lifecycle';
+        var bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.innerHTML =
+          '<div class="bar-brand">' + MARK + '<span class="word">Upsun</span></div>' +
+          '<div class="bar-sep"></div>' +
+          '<div class="bar-proj">' + label + ' <span class="chev">▾</span></div>' +
+          '<div class="bar-spacer"></div>';
+        s.insertBefore(bar, s.firstChild);
+      });
+    })();
+
+    Reveal.initialize({
+      width: 1920,
+      height: 1080,
+      margin: 0,
+      center: false,
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'none',
+      plugins: [ RevealNotes, RevealHighlight ],
+    });
+  </script>
+</body>
+</html>
