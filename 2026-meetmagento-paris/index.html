@@ -590,6 +590,68 @@ Agent-agnostic: the drop-in is a tool-neutral prompt; .agents/critic.md is just 
 ~3 min, live, recorded fallback. Repo: github.com/gmoigneu/scd-demo. Start on branch demo/invoice-tax. Beat 0: gates green. Beat 1: Critic → NOT READY, cites doc/adr/0002 + the Bet Guardrail. Beat 2: agent applies the remediation. Beat 3: php bin/bench.php → $82.50 → $0.00, gates still green. Full runbook in DEMO.md. Reskin to a Magento branch before the talk if possible.</aside>
       </section>
 
+      <!-- 32a–32e · LIVE DEMO · screen captures (walk the beats) -->
+
+      <!-- 32a · the change under test -->
+      <section class="ink" data-bar="Live demo">
+        <div class="body">
+          <p class="eyebrow anim">Live · the change under test</p>
+          <h2 class="title anim" style="font-size:40px;">The feature</h2>
+          <div class="anim" style="flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; margin-top:20px;">
+            <img src="resources/demo/1-diff.png" alt="Git diff of the cart-price-rule branch: a new InvoiceTotaller service plus a bench.php harness that generates N identical line items and computes an exact total in integer cents, taxing once on the subtotal." style="max-width:100%; max-height:100%; width:auto; height:auto; border-radius:10px; box-shadow:0 24px 60px rgba(0,0,0,0.45);">
+          </div>
+        </div>
+        <aside class="notes">Beat 0 — the diff. A new cart-price-rule / invoice-tax feature, and next to it the bench harness: an independent integer-cents oracle that taxes once on the subtotal. That oracle is the contract the demo measures against.</aside>
+      </section>
+
+      <!-- 32b · every gate green -->
+      <section class="ink" data-bar="Live demo">
+        <div class="body">
+          <p class="eyebrow anim">Live · ship it?</p>
+          <h2 class="title anim" style="font-size:40px;">Every gate passes — phpstan, phpunit, Deptrac, GrumPHP</h2>
+          <div class="anim" style="flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; margin-top:20px;">
+            <img src="resources/demo/2-allgood.png" alt="Terminal showing phpstan '[OK] No errors', phpunit 'OK (1 test, 1 assertion)', and GrumPHP running phplint, phpstan, deptrac and phpunit — all four tasks green." style="max-width:100%; max-height:100%; width:auto; height:auto; border-radius:10px; box-shadow:0 24px 60px rgba(0,0,0,0.45);">
+          </div>
+        </div>
+        <aside class="notes">Beat 1 — ship it? Every gate is green: phpstan, phpunit, Deptrac, GrumPHP. By every machine check, this PR is ready.</aside>
+      </section>
+
+      <!-- 32c · green gates, drifting ledger -->
+      <section class="ink" data-bar="Live demo">
+        <div class="body">
+          <p class="eyebrow anim">Live · run the bench</p>
+          <h2 class="title anim" style="font-size:40px;">Green gates. The ledger still drifts <span class="accent">$82.50</span></h2>
+          <div class="anim" style="flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; margin-top:20px;">
+            <img src="resources/demo/3-nope.png" alt="php bin/bench.php output comparing the shipped total to an independent integer-cents oracle across 3, 100, 10k and 100k lines. Drift grows from $0.00 to +$82.50. Message: NOT RECONCILED — money is held in floats and tax rounded per line, and every gate stayed green." style="max-width:100%; max-height:100%; width:auto; height:auto; border-radius:10px; box-shadow:0 24px 60px rgba(0,0,0,0.45);">
+          </div>
+        </div>
+        <aside class="notes">Run the bench against the oracle. Same code, every gate still green — but the shipped total drifts: nothing at three lines, eighty-two fifty off at a hundred thousand. NOT RECONCILED. Verification can't see it.</aside>
+      </section>
+
+      <!-- 32d · the Critic says no -->
+      <section class="ink" data-bar="Live demo">
+        <div class="body">
+          <p class="eyebrow anim">Live · the Critic</p>
+          <h2 class="title anim" style="font-size:40px;">A second agent: <span class="accent">NOT READY TO MERGE</span></h2>
+          <div class="anim" style="flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; margin-top:20px;">
+            <img src="resources/demo/4-agent-check.png" alt="Critic agent verdict reviewing HEAD against the recorded contracts: NOT READY TO MERGE. It pinpoints the float-money lines, cites ADR 0002 and the Bet 0002 guardrail, explains why green tests don't save it, and shows the drift table scaling to +$82.50 at 100k lines." style="max-width:100%; max-height:100%; width:auto; height:auto; border-radius:10px; box-shadow:0 24px 60px rgba(0,0,0,0.45);">
+          </div>
+        </div>
+        <aside class="notes">Beat 2 — the Critic. A separate agent, told to reject, reads HEAD against the recorded contracts: NOT READY TO MERGE. It cites ADR 0002 and the Bet guardrail, and notes the green tests are verification, not validation.</aside>
+      </section>
+
+      <!-- 32e · fixed and proven -->
+      <section class="ink" data-bar="Live demo">
+        <div class="body">
+          <p class="eyebrow anim">Live · the fix</p>
+          <h2 class="title anim" style="font-size:40px;">Integer cents, round once — reconciled to <span class="accent">$0.00</span>, gates still green</h2>
+          <div class="anim" style="flex:1 1 auto; min-height:0; display:flex; align-items:center; justify-content:center; margin-top:20px;">
+            <img src="resources/demo/5-fix.png" alt="After the fix: bench reports +0.00 drift at every scale including 100k lines, phpunit still green, phpstan reports no errors. A verification table confirms Reconciled with unchanged tests; the reconciliation harness now agrees to the cent, satisfying the Bet 0002 guardrail and ADR 0002." style="max-width:100%; max-height:100%; width:auto; height:auto; border-radius:10px; box-shadow:0 24px 60px rgba(0,0,0,0.45);">
+          </div>
+        </div>
+        <aside class="notes">Beat 3 — the fix. Integer cents, tax once on the subtotal. The bench reconciles to zero at every scale, and the gates are still green. Verification passed the whole time; only validation caught the bug — and now both agree.</aside>
+      </section>
+
       <!-- 33 · FLYWHEEL · close the loop -->
       <section class="tint" data-bar="The loop">
         <div class="body">
