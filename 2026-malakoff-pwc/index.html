@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adapter l'ingénierie aux agents IA · Malakoff · PwC 2026</title>
+
+  <link rel="stylesheet" href="../global-resources/reveal-theme/reveal/dist/reset.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/reveal/dist/reveal.css" />
+  <!-- Thème Dispatch du deck : tokens -> dispatch -> mises en page -->
+  <link rel="stylesheet" href="../global-resources/reveal-theme/tokens.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/dispatch.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/layouts.css" />
+  <link rel="stylesheet" href="../global-resources/reveal-theme/highlight-dispatch.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1 · COVER -->
+      <section class="ink" data-bar="Introduction">
+        <div class="body">
+          <div class="two-col">
+            <div>
+              <p class="eyebrow anim">Malakoff &middot; PwC &mdash; 2026</p>
+              <h1 class="title display anim" style="font-size:82px; max-width:820px;">Adapter l'ingénierie<br>aux agents IA</h1>
+              <p class="subtitle anim">Ce qui change vraiment pour les managers d'ingénierie.</p>
+              <div class="anim" style="display:flex; gap:14px; margin-top:48px;">
+                <span class="tag active"><span class="dot"></span>Guillaume Moigneu</span>
+                <span class="tag building"><span class="dot"></span>Upsun</span>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;">
+              <div class="anim" style="background:#fff; padding:32px; border-radius:var(--radius-lg); box-shadow:var(--bs-medium);">
+                <img src="resources/linkedin-qr.svg" alt="QR code vers linkedin.com/in/guillaumemoigneu" style="display:block; width:300px; height:300px;">
+              </div>
+              <p class="anim mono" style="font-size:22px;">linkedin.com/in/guillaumemoigneu</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Ouverture. 30 minutes, puis 15 minutes de questions. C'est un retour d'expérience sur l'organisation, pas une démo d'outil.</aside>
+      </section>
+
+      <!-- 2 · CONTEXTE -->
+      <section class="ink" data-bar="Contexte">
+        <img src="resources/guillaume-avatar.png" alt="Portrait illustré de Guillaume Moigneu" style="position:absolute; left:0; bottom:0; width:560px; max-height:760px; object-fit:contain; z-index:1;">
+        <div class="body">
+          <div style="margin-left:620px; max-width:1040px;">
+              <p class="eyebrow anim">Pourquoi ce retour d'expérience</p>
+              <h2 class="title anim" style="font-size:56px;">Guillaume Moigneu</h2>
+              <p class="lead anim" style="margin-top:22px; max-width:48ch;">Je développe des applications web depuis 1998 : agences, clients finaux, puis Upsun depuis dix ans.</p>
+              <div class="feature-grid cols-2 anim" style="margin-top:34px;">
+                <div class="card feature shadow"><h3>Mon obsession</h3><p>Optimiser mon travail, les projets et la façon dont les équipes livrent.</p></div>
+                <div class="card feature shadow"><h3>Depuis 2 ans</h3><p>Je travaille en profondeur sur les pratiques d'ingénierie avec l'IA.</p></div>
+                <div class="card feature shadow"><h3>Chez Upsun</h3><p>3 produits, 110 personnes côté ingénierie et produit.</p></div>
+                <div class="card feature shadow"><h3>Field CTO</h3><p>Surveiller et tester les nouvelles solutions, puis voir comment l'ingénierie peut en bénéficier.</p></div>
+              </div>
+          </div>
+        </div>
+        <aside class="notes">Ancrer le talk dans mon contexte : je développe des applications web depuis 1998, j'ai travaillé en agence, chez des clients finaux, puis chez Upsun depuis dix ans. Je suis obsédé par l'optimisation de mon travail et des projets. Depuis deux ans, je travaille en profondeur sur l'IA. Mon rôle aujourd'hui : Field CTO, surveiller et tester les nouvelles solutions, puis voir comment l'ingénierie peut en bénéficier, dans une organisation de 110 personnes côté ingénierie et produit, qui livre trois produits.</aside>
+      </section>
+
+      <!-- ══ ACT I · LE PIÈGE ══ -->
+
+      <!-- 3 · L'ESSENTIEL -->
+      <section class="ink" data-bar="L'essentiel">
+        <div class="body center">
+          <p class="eyebrow anim">La conclusion d'abord</p>
+          <h2 class="title display anim" style="font-size:72px;">Le goulot n'est plus l'écriture du code.</h2>
+          <p class="lead anim" style="margin-top:34px; max-width:44ch;">Le goulot, c'est la <span class="accent">clarté du travail.</span></p>
+        </div>
+        <aside class="notes">Donner la conclusion dès le début. L'IA change moins la quantité de code que l'exigence de clarté autour du travail. Ce talk est un sujet de management, pas seulement d'outillage.</aside>
+      </section>
+
+      <!-- 4 · CE QUI SE PASSE · INDIVIDUS -->
+      <section data-bar="Acte I · Ce qui se passe">
+        <div class="body">
+          <p class="eyebrow anim">L'outil ne fait pas l'organisation</p>
+          <h2 class="title anim">Certains avancent déjà beaucoup plus vite que le reste du système.</h2>
+          <p class="lead anim" style="margin-top:24px; max-width:48ch;">Un développeur adopte ses outils, ses prompts et son contexte personnel. La direction pense avoir "donné accès à l'IA". Une vitesse locale apparaît, mais le reste du système ne change pas.</p>
+          <div class="feature-grid cols-3 anim" style="margin-top:34px;">
+            <div class="card feature shadow"><h3>Pratiques privées</h3><p>Chaque personne invente son propre usage. Qui n'est pas forcément le meilleur.</p></div>
+            <div class="card feature shadow"><h3>Contexte privé</h3><p>Les règles vivent dans une tête ou sur un poste individuel.</p></div>
+            <div class="card feature shadow"><h3>Gain local</h3><p>L'équipe ne récupère pas cette vitesse à elle seule.</p></div>
+          </div>
+        </div>
+        <aside class="notes">La vraie histoire n'est pas un individu exceptionnel. Augmenter des personnes avec des outils ne suffit pas si le rôle et le workflow restent identiques.</aside>
+      </section>
+
+      <!-- 5 · CE QUI POURRAIT ÊTRE · VÉLOCITÉ -->
+      <section class="tint" data-bar="Acte I · Ce qui pourrait être">
+        <div class="body">
+          <p class="eyebrow anim">Le vrai sujet</p>
+          <h2 class="title anim">La vitesse d'un développeur n'est pas la <span class="accent">vélocité d'une organisation.</span></h2>
+          <p class="lead anim" style="margin-top:28px; max-width:50ch;">Le travail du manager ne se limite plus à débloquer la production individuelle. Il consiste aussi à convertir des pratiques isolées en capacité partagée.</p>
+          <p class="lead anim" style="margin-top:18px; max-width:50ch;">La question devient : qu'est-ce qui doit être clair pour que toute l'équipe avance ?</p>
+        </div>
+        <aside class="notes">Premier pivot : on sort du débat "quel outil ?" pour aller vers "quel système de travail ?". Les huit stades peuvent être mentionnés oralement comme trois mouvements : individu, équipe, organisation.</aside>
+      </section>
+
+      <!-- 6 · CARTE · 8 niveaux de maturité -->
+      <section class="tint" data-bar="Carte de maturité">
+        <div class="body">
+          <p class="eyebrow anim">8 niveaux de maturité en ingénierie IA</p>
+          <h2 class="title anim">D'abord l'<span class="accent">individu</span> progresse. Puis l'<span class="accent">équipe</span>. Puis l'<span class="accent">organisation</span>.</h2>
+          <div class="feature-grid cols-3 anim" style="margin-top:32px;">
+            <div class="card feature shadow">
+              <h3>Acte I · L'individu</h3>
+              <p style="line-height:1.75;">
+                <strong>1 · Le vide</strong> — pas de stratégie IA<br>
+                <strong>2 · La dérive</strong> — des usages personnels<br>
+                <strong>3 · Les îlots</strong> <span class="accent">← souvent ici</span><br>des personnes rapides, une équipe désalignée
+              </p>
+            </div>
+            <div class="card feature shadow">
+              <h3>Acte II · L'équipe</h3>
+              <p style="line-height:1.75;">
+                <strong>4 · Standardiser</strong> — financer la capacité<br>
+                <strong>5 · Repenser le workflow</strong> — spécifier avant le code<br>
+                <strong>6 · Système d'exploitation</strong> — les agents deviennent des coéquipiers
+              </p>
+            </div>
+            <div class="card feature shadow">
+              <h3>Acte III · L'organisation</h3>
+              <p style="line-height:1.75;">
+                <strong>7 · Agent Factory</strong> — les agents livrent, vous supervisez<br>
+                <strong>8 · Autonomie</strong> — le travail part de déclencheurs
+              </p>
+            </div>
+          </div>
+          <div class="anim" style="margin-top:28px; display:flex; align-items:center; gap:22px;">
+            <div style="background:#fff; padding:12px; border-radius:var(--radius-lg); box-shadow:var(--bs-medium);">
+              <img src="resources/8-stages-qr.svg" alt="QR code vers upsun.com/blog/8-stages-ai-engineering-maturity" style="display:block; width:132px; height:132px;">
+            </div>
+            <div>
+              <p class="mono anim" style="font-size:21px;">upsun.com/blog/8-stages-ai-engineering-maturity</p>
+              <p class="anim" style="font-size:18px; opacity:0.72; margin-top:6px;">Le détail complet. La suite du talk zoome sur le passage des îlots à la capacité partagée.</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Huit niveaux, mais les raconter comme trois mouvements : individu, équipe, organisation. L'acte un va du vide aux usages personnels, puis aux îlots : certaines personnes avancent vite, mais l'équipe reste désalignée. L'acte deux, c'est le passage à l'équipe : standardiser, repenser le workflow, jusqu'à traiter les agents comme des coéquipiers. L'acte trois est l'horizon organisationnel : agents qui livrent sous supervision, puis travail déclenché automatiquement. Ne pas demander au public de mémoriser les huit niveaux ; simplement poser la carte et placer le curseur sur les îlots avant la slide suivante.</aside>
+      </section>
+
+      <!-- 7 · CE QUI SE PASSE · ÎLOTS -->
+      <section class="ink" data-bar="Acte I · Tension">
+        <div class="body">
+          <p class="eyebrow anim">Les îlots créent les nouveaux goulots</p>
+          <h2 class="title anim">Deux équipes, même boîte, <span class="accent">deux rythmes.</span></h2>
+          <div class="feature-grid cols-3 anim" style="margin-top:40px;">
+            <div class="card feature shadow"><h3>Frustration</h3><p>L'équipe rapide s'agace d'attendre le reste du système.</p></div>
+            <div class="card feature shadow"><h3>Ressentiment</h3><p>L'équipe qui décroche se sent jugée ou dépassée.</p></div>
+            <div class="card feature shadow"><h3>Délais</h3><p>Les revues, l'intégration et la coordination deviennent les nouveaux points de friction.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Nommer le coût humain. Les îlots ne sont pas seulement inefficaces, ils abîment la confiance entre équipes et déplacent le goulot ailleurs.</aside>
+      </section>
+
+      <!-- ══ ACT II · LE NOUVEAU RÔLE ══ -->
+
+      <!-- 6 · SPÉCIFIER -->
+      <section class="tint" data-bar="Acte II · Ce qui pourrait être">
+        <div class="body">
+          <p class="eyebrow anim">Franchir les silos</p>
+          <h2 class="title display anim" style="font-size:64px;">Spécifier n'est plus de la paperasse.</h2>
+          <p class="lead anim" style="margin-top:30px; max-width:50ch;">C'est l'interface entre équipes : le travail, les responsabilités, les contraintes et les décisions que les humains comme les agents peuvent relire.</p>
+          <div class="feature-grid cols-3 anim" style="margin-top:34px;">
+            <div class="card feature shadow"><h3>Travail</h3><p>Résultat attendu, contraintes, non-objectifs.</p></div>
+            <div class="card feature shadow"><h3>Responsabilités</h3><p>Qui décide, qui valide, qui maintient.</p></div>
+            <div class="card feature shadow"><h3>Interfaces</h3><p>Ce qu'une équipe peut consommer sans réunion.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Le silo n'est pas seulement un organigramme. C'est du contexte non écrit. La spécification rend ce contexte portable.</aside>
+      </section>
+
+      <!-- 7 · STANDARDISER -->
+      <section data-bar="Acte II · Standardisation">
+        <div class="body">
+          <p class="eyebrow anim">Aligner avant d'accélérer</p>
+          <h2 class="title anim">La standardisation fait passer l'IA en <span class="accent">capacité financée.</span></h2>
+          <div class="feature-grid cols-4 anim" style="margin-top:38px;">
+            <div class="card feature shadow"><h3>Alignement</h3><p>Mêmes attentes et mêmes règles de travail.</p></div>
+            <div class="card feature shadow"><h3>Vélocité</h3><p>Pratiques réutilisables au-delà d'une équipe.</p></div>
+            <div class="card feature shadow"><h3>Coût</h3><p>Financer le travail, pas les comptes personnels.</p></div>
+            <div class="card feature shadow"><h3>Sécurité</h3><p>SSO, audit, contrôles et accès gouvernés.</p></div>
+          </div>
+        </div>
+        <aside class="notes">La standardisation n'est pas une manie de contrôle. C'est ce qui permet à l'organisation de financer, sécuriser et aligner l'usage de l'IA.</aside>
+      </section>
+
+      <!-- 8 · NOUVEAU MANAGER -->
+      <section class="ink" data-bar="Acte II · Nouveau rôle">
+        <div class="body center">
+          <p class="eyebrow anim">Le rôle change</p>
+          <h2 class="title anim">Demain, le manager d'ingénierie ne manage pas seulement des personnes.</h2>
+          <p class="lead anim" style="margin-top:30px; max-width:52ch;">Il manage du <span class="accent">contexte</span>, des <span class="accent">workflows</span> et des <span class="accent">preuves.</span></p>
+        </div>
+        <aside class="notes">Phrase d'ancrage numéro deux. Les managers deviennent coaches, architectes de workflow, responsables de la spécification du travail et propriétaires de qualité.</aside>
+      </section>
+
+      <!-- 9 · DÉVELOPPEUR À INGÉNIEUR -->
+      <section data-bar="Acte II · Développeur à ingénieur">
+        <div class="body">
+          <p class="eyebrow anim">Une promotion, pas une menace</p>
+          <h2 class="title anim">Les développeurs passent de l'exécution au <span class="accent">jugement d'ingénierie.</span></h2>
+          <div class="two-col anim" style="margin-top:44px;">
+            <div class="card feature shadow"><h3>Avant</h3><p class="strike">Écrire le code. Relire le diff, ligne à ligne. Porter l'exécution.</p></div>
+            <div class="card feature shadow"><h3>Avec les agents</h3><p>Définir l'intention, poser les contraintes, demander la preuve.</p></div>
+          </div>
+          <p class="lead anim" style="margin-top:26px; max-width:52ch;">Une part importante du travail commence avant le code : ce qui doit être vrai, ce qui est hors-scope, ce qui montrera que c'est terminé.</p>
+        </div>
+        <aside class="notes">Répondre à la peur de face. On peut voir la programmation comme une conséquence de l'ingénierie ; les agents absorbent une partie de cette conséquence, pas le jugement.</aside>
+      </section>
+
+      <!-- 10 · FLUX DE TRAVAIL -->
+      <section class="tint" data-bar="Acte II · Workflow">
+        <div class="body">
+          <p class="eyebrow anim">Le flux de travail change</p>
+          <h2 class="title anim">Un ticket vague risque de produire du code vague, <span class="accent">plus vite.</span></h2>
+          <div class="two-col anim" style="margin-top:42px;">
+            <div class="card feature shadow"><h3>Avant</h3><p>Ticket → code → revue ligne à ligne → fusion.</p></div>
+            <div class="card feature shadow"><h3>Avec agents</h3><p>Spécification → génération → contrôles → inspection → validation humaine.</p></div>
+          </div>
+          <p class="lead anim" style="margin-top:28px; max-width:50ch;">L'IA ne corrige pas le flou toute seule. Elle peut le reproduire plus vite.</p>
+        </div>
+        <aside class="notes">Rendre le chemin explicite et répétable devient un travail de management. Le workflow est maintenant une primitive de gouvernance.</aside>
+      </section>
+
+      <!-- 11 · CONTEXTE -->
+      <section data-bar="Acte II · Contexte">
+        <div class="body">
+          <p class="eyebrow anim">Attention au faux remède</p>
+          <h2 class="title anim">Plus de contenu n'est pas un meilleur <span class="accent">contexte.</span></h2>
+          <p class="lead anim" style="margin-top:28px; max-width:50ch;">Les agents peuvent produire beaucoup de docs, de tests et d'instructions. Trop de contexte devient du bruit et dilue les règles importantes.</p>
+          <div class="stat-hero anim" style="margin-top:34px;">
+            <div class="num">95<span class="u">%</span></div>
+            <div class="meta">
+              <span class="l">de contexte supprimé, et de meilleurs résultats</span>
+              <span class="tag failed"><span class="dot"></span>plus n'est pas mieux</span>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Le chiffre est directionnel, issu du retour d'expérience Nick Nisi. Mériter chaque ligne. Les modèles savent produire du code plausible ; ce qu'ils ignorent, ce sont vos contraintes spécifiques.</aside>
+      </section>
+
+      <!-- ══ ACT III · LE SYSTÈME ══ -->
+
+      <!-- 12 · L'AGENT QUI TRICHE -->
+      <section class="ink" data-bar="Acte III · Tension">
+        <div class="body">
+          <p class="eyebrow anim">Ce qui se passe quand la barre est floue</p>
+          <h2 class="title anim">Un agent a buté sur un test. Il l'a "corrigé" en <span class="accent">modifiant le test.</span></h2>
+          <p class="lead anim" style="margin-top:28px;">Puis il a annoncé : vert.</p>
+          <div class="anim" style="margin-top:32px;"><span class="tag failed"><span class="dot"></span>succès auto-déclaré</span></div>
+        </div>
+        <aside class="notes">Histoire simple et mémorable. Tout le monde comprend la triche à l'examen. La tension n'est plus "peut-il produire ?", mais "peut-on croire le résultat ?".</aside>
+      </section>
+
+      <!-- 13 · V&V -->
+      <section data-bar="Acte III · Preuves">
+        <div class="body">
+          <p class="eyebrow anim">Ce qui pourrait se passer</p>
+          <h2 class="title anim">La vérification s'automatise. <span class="accent">La validation reste humaine.</span></h2>
+          <div class="two-col anim" style="margin-top:44px;">
+            <div class="card feature shadow"><h3>Vérification <span class="badge machine">machine</span></h3><p>Tests, types, contrôles, évaluations, conformité à la spécification.</p></div>
+            <div class="card feature shadow"><h3>Validation <span class="badge human">vous</span></h3><p>Intention, comportement réel, arbitrage métier et technique.</p></div>
+          </div>
+          <p class="lead anim" style="margin-top:28px; max-width:52ch;">Automatiser une partie de la vérification libère votre jugement. Elle ne le remplace pas.</p>
+        </div>
+        <aside class="notes">Le manager possède la barre de qualité. La validation reste humaine parce qu'elle touche au sens et à l'intention.</aside>
+      </section>
+
+      <!-- 14 · MANDAT -->
+      <section class="tint" data-bar="Acte III · Lundi matin">
+        <div class="body">
+          <p class="eyebrow anim">Le mandat du lundi matin</p>
+          <h2 class="title anim">Ce qui ne peut pas être spécifié, vérifié et partagé ne passera pas à l'échelle avec l'IA.</h2>
+          <div class="feature-grid cols-3 anim" style="margin-top:38px;">
+            <div class="card feature shadow"><h3>Contexte partagé</h3><p>Sortez la connaissance des têtes.</p></div>
+            <div class="card feature shadow"><h3>Workflows partagés</h3><p>Rendez le passage de l'idée à la fusion observable.</p></div>
+            <div class="card feature shadow"><h3>Preuves partagées</h3><p>Automatisez ce qui peut l'être, assumez le jugement humain.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Phrase d'ancrage numéro trois. Le take-away opérationnel : ne pas courir après l'usine autonome, tuer d'abord les îlots.</aside>
+      </section>
+
+      <!-- 15 · NOUVEL ÉQUILIBRE + DISPATCH -->
+      <section class="violet" data-bar="Nouvel équilibre">
+        <div class="body">
+          <p class="eyebrow anim">La nouvelle image de l'équipe augmentée</p>
+          <h2 class="title anim">Une équipe augmentée n'est pas seulement une équipe où chacun utilise un agent.</h2>
+          <p class="lead anim" style="margin-top:26px; max-width:52ch;">C'est une équipe dont le travail est assez clair pour être accéléré sans perdre son intention.</p>
+          <div class="feature-grid cols-3 anim" style="margin-top:34px;">
+            <div class="card feature shadow"><h3>Spécifié</h3><p>Le travail est lisible par les humains et par les agents.</p></div>
+            <div class="card feature shadow"><h3>Vérifié</h3><p>La qualité repose davantage sur le système, moins sur l'espoir.</p></div>
+            <div class="card feature shadow"><h3>Partagé</h3><p>La capacité n'est plus enfermée sur des postes individuels.</p></div>
+          </div>
+        </div>
+        <aside class="notes">Clore la transformation émotionnelle : on passe de la peur à un rôle plus net. Phrase finale possible : avec l'IA, votre organisation ne passe pas à l'échelle avec plus de code ; elle passe à l'échelle avec plus de clarté.</aside>
+      </section>
+
+      <!-- 16 · DISPATCH + QUESTIONS -->
+      <section class="ink" data-bar="Dispatch">
+        <div class="body">
+          <div class="two-col">
+            <div>
+              <p class="eyebrow anim">La conséquence du raisonnement</p>
+              <h2 class="title anim" style="font-size:56px;">Voilà ce que nous construisons.<br><span class="accent">Upsun Dispatch.</span></h2>
+              <p class="lead anim" style="margin-top:28px; max-width:46ch;">Des agents partagés sur infrastructure commune, des workflows gouvernés, un contexte d'organisation, et des preuves attachées au travail.</p>
+              <p class="lead anim" style="margin-top:22px; max-width:42ch;">Avec l'IA, votre organisation ne passe pas à l'échelle avec plus de code ; elle passe à l'échelle avec plus de clarté.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;">
+              <div class="anim" style="background:#fff; padding:32px; border-radius:var(--radius-lg); box-shadow:var(--bs-medium);">
+                <img src="resources/linkedin-qr.svg" alt="QR code vers linkedin.com/in/guillaumemoigneu" style="display:block; width:320px; height:320px;">
+              </div>
+              <p class="anim mono" style="font-size:24px;">linkedin.com/in/guillaumemoigneu</p>
+              <p class="anim" style="font-size:18px; opacity:0.7;">Guillaume Moigneu &middot; Upsun</p>
+            </div>
+          </div>
+        </div>
+        <aside class="notes">Ne pas en faire un argumentaire commercial. Dispatch arrive comme une réponse aux problèmes mentionnés : agents partagés, workflows gouvernés, contexte commun, coût et preuve attachés au travail. Rester ici pendant les questions.</aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../global-resources/reveal-theme/reveal/dist/reveal.js"></script>
+  <script src="../global-resources/reveal-theme/reveal/dist/plugin/notes.js"></script>
+  <script src="../global-resources/reveal-theme/reveal/dist/plugin/highlight.js"></script>
+  <script>
+    // Injecte la barre Upsun dans chaque slide (motif visuel Dispatch).
+    (function () {
+      var MARK = '<svg class="mark" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.9954 5C13.9556 5 5 13.9505 5 25.0046H14.9954C15.0185 19.4753 19.4963 15.0046 25.0092 15.0046C30.5222 15.0046 35.0046 19.4845 35.0046 25.0046H45C44.9954 13.9598 36.049 5 24.9954 5Z"/><path d="M35.0416 25.0046H15.0555C15.0555 29.332 17.8096 33.0259 21.659 34.4082V34.5793H7.5C10.8872 40.7883 17.4815 45 25.0601 45C32.6386 45 39.219 40.7883 42.6202 34.5793H28.4381V34.4082C32.2921 33.0167 35.0416 29.332 35.0416 25.0046Z"/></svg>';
+      // Les couleurs vivent sur <section>, que Reveal met à l'échelle en 1920x1080.
+      // On les recopie sur le fond plein écran pour éviter les marges grises.
+      var BG = { tint: '#EFEDFF', ink: '#181E21', violet: '#4D38CC' };
+      document.querySelectorAll('.reveal .slides > section').forEach(function (s) {
+        var bgKey = s.classList.contains('tint') ? 'tint'
+                  : s.classList.contains('ink') ? 'ink'
+                  : s.classList.contains('violet') ? 'violet' : null;
+        s.setAttribute('data-background-color', bgKey ? BG[bgKey] : '#FFFFFF');
+        var label = s.getAttribute('data-bar') || 'Agentic Lifecycle';
+        var bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.innerHTML =
+          '<div class="bar-brand">' + MARK + '<span class="word">Upsun</span></div>' +
+          '<div class="bar-sep"></div>' +
+          '<div class="bar-proj">' + label + ' <span class="chev">▾</span></div>' +
+          '<div class="bar-spacer"></div>';
+        s.insertBefore(bar, s.firstChild);
+      });
+    })();
+
+    Reveal.initialize({
+      width: 1920,
+      height: 1080,
+      margin: 0,
+      center: false,
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'none',
+      plugins: [ RevealNotes, RevealHighlight ],
+    });
+  </script>
+</body>
+</html>
